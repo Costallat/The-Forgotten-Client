@@ -151,7 +151,9 @@ struct KeyRepeat
 #endif
 
 #if defined(__WIN32__)
-#include <windows.h>
+  #include <windows.h>
+#else
+typedef unsigned int DWORD;
 #endif
 
 #include <time.h>

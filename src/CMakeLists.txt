@@ -163,11 +163,11 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/light.cpp
     ${CMAKE_CURRENT_LIST_DIR}/lzma/Alloc.c
     ${CMAKE_CURRENT_LIST_DIR}/lzma/LzFind.c
-    ${CMAKE_CURRENT_LIST_DIR}/lzma/LzFindMt.c
+    # ${CMAKE_CURRENT_LIST_DIR}/lzma/LzFindMt.c
     ${CMAKE_CURRENT_LIST_DIR}/lzma/LzmaDec.c
-    ${CMAKE_CURRENT_LIST_DIR}/lzma/LzmaEnc.c
+    # ${CMAKE_CURRENT_LIST_DIR}/lzma/LzmaEnc.c
     ${CMAKE_CURRENT_LIST_DIR}/lzma/LzmaLib.c
-    ${CMAKE_CURRENT_LIST_DIR}/lzma/Threads.c
+    # ${CMAKE_CURRENT_LIST_DIR}/lzma/Threads.c
     ${CMAKE_CURRENT_LIST_DIR}/main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/map.cpp
     ${CMAKE_CURRENT_LIST_DIR}/outputMessage.cpp

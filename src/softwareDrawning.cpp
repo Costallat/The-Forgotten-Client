@@ -20,6 +20,7 @@
 */
 
 #include "softwareDrawning.h"
+#include <x86intrin.h>
 
 static const float inv255f = (1.0f / 255.0f);
 
@@ -593,7 +594,7 @@ void DrawSpansBetweenEdges_Scalar(SDL_Surface* dst, SDL_Rect* clip_rect, const E
 	e2colordiff[0] = (e2.Color2[0] - e2.Color1[0]);
 	e2colordiff[1] = (e2.Color2[1] - e2.Color1[1]);
 	e2colordiff[2] = (e2.Color2[2] - e2.Color1[2]);
-	
+
 	float factor1 = SDL_static_cast(float, e2.Y1 - e1.Y1) / e1ydiff;
 	float factorStep1 = 1.0f / e1ydiff;
 	float factor2 = 0.0f;
@@ -1349,7 +1350,7 @@ void SDL_DrawLightMap_new(SDL_Surface* src, LightMap* lightmap, Sint32 x, Sint32
 			VEC_MAX(topCenter);
 			VEC_MAX(center);
 			#undef VEC_MAX
-			
+
 			//Draw Top-Left square
 			vertices[0][0] = drawX; vertices[0][1] = (drawY + halfScale);
 			colors[0][0] = leftCenter[0][0]; colors[0][1] = leftCenter[0][1]; colors[0][2] = leftCenter[0][2];
@@ -1590,7 +1591,7 @@ Sint32 SDL_SmoothStretch_MT(SDL_Surface* src, SDL_Rect* srcrect, SDL_Surface* ds
 			thread->dr = {dx, dy, dw, dh};				    \
 			SDL_CondSignal(thread->drawCond);				\
 		} while(0)
-	
+
 	SOFTWARE_threadData* thread;
 	if(threadCores == 4)
 	{
@@ -1675,7 +1676,7 @@ void SDL_SmoothStretch_init()
 		SDL_DrawTriangle_MOD = SDL_reinterpret_cast(LPSDL_DrawTriangle_MOD, DrawTriangle_SSE);
 	#endif
 	#endif
-	
+
 	#ifdef __USE_SSE4_1__
 	if(SDL_HasSSE41())
 	{

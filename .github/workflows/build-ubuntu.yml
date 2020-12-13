@@ -45,3 +45,15 @@ jobs:
       run: |
         cd build
         make -j `nproc`
+
+    - name: Prepare datapack contents
+      shell: bash
+      run: |
+        cd ..
+        zip -r The-Forgotten-Client.zip The-Forgotten-Client
+
+    - name: Upload binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: The-Forgotten-Client-${{ matrix.os }}-${{ github.sha }}
+        path: ${{ runner.workspace }}/The-Forgotten-Client.zip

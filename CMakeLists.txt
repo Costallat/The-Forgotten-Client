@@ -4,6 +4,18 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 # git clone https://github.com/Kitware/CMake/; cd CMake
 # ./bootstrap && make && sudo make install
 
+# cat ~/.hunter/_Base/Download/Hunter/0.23.285/f8af933/Unpacked/cmake/projects/SDL2/hunter.cmake
+# hunter_add_version(
+#         PACKAGE_NAME
+#         SDL2
+#         VERSION
+#         "2.0.8"
+#         URL
+#         "https://www.libsdl.org/release/SDL2-2.0.8.tar.gz"
+#         SHA1
+#         959ec6ded277821995d2e3cafd973f6ab9f48ab7
+# )
+
 # *****************************************************************************
 # Cmake Hunter
 # *****************************************************************************

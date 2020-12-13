@@ -53,8 +53,9 @@ endif()
 # Packages / Libs
 # *****************************************************************************
 
-hunter_add_package(SDL2)
-find_package(SDL2 CONFIG REQUIRED)
+# hunter_add_package(SDL2)
+# find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2 REQUIRED)
 
 hunter_add_package(CURL)
 find_package(CURL CONFIG REQUIRED)
@@ -199,19 +200,19 @@ target_include_directories(${PROJECT_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
+    ${SDL2_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
-    SDL2::SDL2main
-    SDL2::SDL2
+    ${SDL2_LIBRARIES}
     CURL::libcurl
     lzma::lzma
     Vulkan-Headers::Vulkan-Headers
     OpenGL::OpenGL
 )
 
-target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native -mno-fma4)
+target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=skylake -mno-fma4)
 
 
 # target_compile_definitions(${PROJECT_NAME} PUBLIC SDL_VIDEO_RENDER_OGL=ON)

@@ -339,7 +339,7 @@ void DrawTriangle_FMA3(SDL_Surface* dst, const float colors[3][3], Sint32 vertic
 }
 #endif
 
-#if defined(__USE_FMA4__)
+#if defined(afgsdfgsdf)
 void DrawSpan_FMA4(SDL_Surface* dst, SDL_Rect* clip_rect, const Span_SSE &span, Sint32 y)
 {
 	Sint32 xdiff = (span.X2 - span.X1);
@@ -1657,8 +1657,8 @@ void SDL_SmoothStretch_init()
 	#if (defined(__USE_FMA3__) || defined(__USE_FMA4__))
 	if(SDL_HasFMA3())
 		SDL_DrawTriangle_MOD = SDL_reinterpret_cast(LPSDL_DrawTriangle_MOD, DrawTriangle_FMA3);
-	else if(SDL_HasFMA4())
-		SDL_DrawTriangle_MOD = SDL_reinterpret_cast(LPSDL_DrawTriangle_MOD, DrawTriangle_FMA4);
+	// else if(SDL_HasFMA4())
+	// 	SDL_DrawTriangle_MOD = SDL_reinterpret_cast(LPSDL_DrawTriangle_MOD, DrawTriangle_FMA4);
 	else if(SDL_HasSSE())
 		SDL_DrawTriangle_MOD = SDL_reinterpret_cast(LPSDL_DrawTriangle_MOD, DrawTriangle_SSE);
 	#elif defined(__USE_FMA3__)

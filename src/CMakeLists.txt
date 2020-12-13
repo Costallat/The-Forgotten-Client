@@ -211,7 +211,8 @@ target_link_libraries(${PROJECT_NAME}
     OpenGL::OpenGL
 )
 
-target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native )
+target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native -mno-fma4)
+
 
 # target_compile_definitions(${PROJECT_NAME} PUBLIC SDL_VIDEO_RENDER_OGL=ON)
 

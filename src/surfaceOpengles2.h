@@ -23,6 +23,7 @@
 #define __FILE_SURFACE_OPENGLES2_h_
 
 #include "engine.h"
+#include <GL/gl.h>
 
 #if defined(SDL_VIDEO_RENDER_OGL_ES2)
 

@@ -43,14 +43,14 @@ class ScreenText
 	public:
 		ScreenText(OnscreenMessages position) : m_screenPosition(position) {}
 
-		// non-copyable
-		ScreenText(const ScreenText&) = delete;
-		ScreenText& operator=(const ScreenText&) = delete;
+		// // non-copyable
+		// ScreenText(const ScreenText&) = delete;
+		// ScreenText& operator=(const ScreenText&) = delete;
 
-		// non-moveable
-		ScreenText(ScreenText&&) = delete;
-		ScreenText& operator=(ScreenText&&) = delete;
-		
+		// // non-moveable
+		// ScreenText(ScreenText&&) = delete;
+		// ScreenText& operator=(ScreenText&&) = delete;
+
 		void addMessage(MessageMode mode, std::string text);
 		void composeText();
 

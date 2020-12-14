@@ -20,7 +20,6 @@
 */
 
 #include "softwareDrawning.h"
-#include <x86intrin.h>
 
 static const float inv255f = (1.0f / 255.0f);
 

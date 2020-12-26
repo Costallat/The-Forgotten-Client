@@ -53,9 +53,12 @@ endif()
 # Packages / Libs
 # *****************************************************************************
 
-# hunter_add_package(SDL2)
-# find_package(SDL2 CONFIG REQUIRED)
-find_package(SDL2 REQUIRED)
+hunter_add_package(ZLIB)
+find_package(ZLIB CONFIG REQUIRED)
+
+#hunter_add_package(SDL2)
+#find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
 
 hunter_add_package(CURL)
 find_package(CURL CONFIG REQUIRED)
@@ -66,7 +69,9 @@ find_package(lzma CONFIG REQUIRED)
 hunter_add_package(Vulkan-Headers)
 find_package(Vulkan-Headers CONFIG REQUIRED)
 
-find_package(OpenGL)
+find_package(OpenGL REQUIRED)
+find_package(OpenSSL REQUIRED)
+find_package(GMP REQUIRED)
 
 include(GNUInstallDirs)
 
@@ -194,25 +199,29 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/thingManager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/tile.cpp
     ${CMAKE_CURRENT_LIST_DIR}/util.cpp
+    #${CMAKE_CURRENT_LIST_DIR}/openssl_rsa.c
 )
 
 target_include_directories(${PROJECT_NAME}
   PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
     $<INSTALL_INTERFACE:include>
-    ${SDL2_INCLUDE_DIRS}
+    ${GMP_INCLUDE_DIR}
 )
 
 target_link_libraries(${PROJECT_NAME}
   PUBLIC
-    ${SDL2_LIBRARIES}
+    SDL2::SDL2-static
     CURL::libcurl
     lzma::lzma
     Vulkan-Headers::Vulkan-Headers
     OpenGL::OpenGL
+    ZLIB::ZLIB
+    OpenSSL::SSL
+    ${GMP_LIBRARIES}
 )
 
-target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=skylake -mno-fma4)
+target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native)
 
 
 # target_compile_definitions(${PROJECT_NAME} PUBLIC SDL_VIDEO_RENDER_OGL=ON)

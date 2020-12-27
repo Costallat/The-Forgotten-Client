@@ -197,7 +197,6 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/thingManager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/tile.cpp
     ${CMAKE_CURRENT_LIST_DIR}/util.cpp
-    #${CMAKE_CURRENT_LIST_DIR}/openssl_rsa.c
 )
 
 target_include_directories(${PROJECT_NAME}

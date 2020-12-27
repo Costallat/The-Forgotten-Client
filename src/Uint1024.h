@@ -30,9 +30,6 @@
 #define SDL_islowerhex(X)   (((X) >= 'a') && ((X) <= 'f'))
 #endif
 
-#define SDL_isupperhex(X)   (((X) >= 'A') && ((X) <= 'F'))
-#define SDL_islowerhex(X)   (((X) >= 'a') && ((X) <= 'f'))
-
 #if !defined(HAVE__LTOA) || !defined(HAVE__I64TOA) || !defined(HAVE__ULTOA) || !defined(HAVE__UI64TOA)
 static const char ntoa_table[] = {
 	'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',

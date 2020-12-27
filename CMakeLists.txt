@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 # git clone https://github.com/Kitware/CMake/; cd CMake
 # ./bootstrap && make && sudo make install
 
-# cat ~/.hunter/_Base/Download/Hunter/0.23.285/f8af933/Unpacked/cmake/projects/SDL2/hunter.cmake
+# cat ~/.hunter/_Base/Download/Hunter/<version>/<hash>/Unpacked/cmake/projects/SDL2/hunter.cmake
 # hunter_add_version(
 #         PACKAGE_NAME
 #         SDL2
@@ -23,9 +23,9 @@ if(UNIX)
   include("cmake/HunterGate.cmake")
 
   HunterGate(
-      URL "https://github.com/cpp-pm/hunter/archive/v0.23.285.tar.gz"
-      SHA1 "f8af933fb1b13563f604ee3bb61da008e7ec7a67"
-      LOCAL
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.288.tar.gz"
+    SHA1 "6c9b2bc606d86ae31f96a62fc68f0a593024815b"
+    LOCAL
   )
 
 endif()

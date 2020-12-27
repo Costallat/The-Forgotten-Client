@@ -338,7 +338,7 @@ void DrawTriangle_FMA3(SDL_Surface* dst, const float colors[3][3], Sint32 vertic
 }
 #endif
 
-#if defined(afgsdfgsdf)
+#if defined(__USE_FMA4__)
 void DrawSpan_FMA4(SDL_Surface* dst, SDL_Rect* clip_rect, const Span_SSE &span, Sint32 y)
 {
 	Sint32 xdiff = (span.X2 - span.X1);

@@ -132,8 +132,11 @@ struct KeyRepeat
 #if defined(__USE_SSE4_2__)
 #include <nmmintrin.h>
 #endif
-#if (defined(__USE_AVX__) || defined(__USE_AVX2__))
+#if (defined(__USE_AVX__) || defined(__USE_AVX2__)) && !defined(__linux__)
 #include <immintrin.h>
+#endif
+#if (defined(__USE_AVX__) || defined(__USE_AVX2__)) && defined(__linux__)
+#include <x86intrin.h>
 #endif
 #if defined(__USE_NEON__)
 #include <arm_neon.h>

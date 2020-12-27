@@ -5,6 +5,7 @@ project(the-forgotten-client)
 # *****************************************************************************
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Global gives error when building spdlog
 # Avoid changes by cmake/make on the source tree
@@ -23,11 +24,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Options
 # *****************************************************************************
 option(OPTIONS_ENABLE_OPENMP "Enable Open Multi-Processing support." ON)
-option(OPTIONS_ENABLE_UNIT_TEST "Enable Unit-Test Build" OFF)
-option(OPTIONS_ENABLE_BENCHMARKING "Enable Benchmark Build" OFF)
+
 
 # *****************************************************************************
-# CanaryLib
+# Client
 # *****************************************************************************
 add_executable(${PROJECT_NAME} "")
 
@@ -48,6 +48,13 @@ else()
   log_option_disabled("openmp")
 endif()
 
+# === IPO ===
+check_ipo_supported(RESULT result OUTPUT output)
+if(result)
+  set_property(TARGET ${PROJECT_NAME} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+else()
+  message(WARNING "IPO is not supported: ${output}")
+endif()
 
 # *****************************************************************************
 # Packages / Libs
@@ -56,8 +63,7 @@ endif()
 hunter_add_package(ZLIB)
 find_package(ZLIB CONFIG REQUIRED)
 
-#hunter_add_package(SDL2)
-#find_package(SDL2 CONFIG REQUIRED)
+hunter_add_package(SDL2)
 find_package(SDL2 CONFIG REQUIRED)
 
 hunter_add_package(CURL)
@@ -70,17 +76,9 @@ hunter_add_package(Vulkan-Headers)
 find_package(Vulkan-Headers CONFIG REQUIRED)
 
 find_package(OpenGL REQUIRED)
-find_package(OpenSSL REQUIRED)
 find_package(GMP REQUIRED)
 
 include(GNUInstallDirs)
-
-
-# get_cmake_property(_variableNames VARIABLES)
-# list (SORT _variableNames)
-# foreach (_variableName ${_variableNames})
-#     message(STATUS "${_variableName}=${${_variableName}}")
-# endforeach()
 
 
 # *****************************************************************************
@@ -217,14 +215,20 @@ target_link_libraries(${PROJECT_NAME}
     Vulkan-Headers::Vulkan-Headers
     OpenGL::OpenGL
     ZLIB::ZLIB
-    OpenSSL::SSL
     ${GMP_LIBRARIES}
 )
 
-target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native)
+target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=native -mfma4)
 
+# Force cpu family
+# target_compile_options(${PROJECT_NAME} PUBLIC -fpermissive -march=skylake -mfma4)
 
-# target_compile_definitions(${PROJECT_NAME} PUBLIC SDL_VIDEO_RENDER_OGL=ON)
+# print all variables
+# get_cmake_property(_variableNames VARIABLES)
+# list (SORT _variableNames)
+# foreach (_variableName ${_variableNames})
+#     message(STATUS "${_variableName}=${${_variableName}}")
+# endforeach()
 
 set_target_properties(${PROJECT_NAME}
     PROPERTIES

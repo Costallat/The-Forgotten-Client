@@ -63,8 +63,8 @@ endif()
 hunter_add_package(ZLIB)
 find_package(ZLIB CONFIG REQUIRED)
 
-hunter_add_package(SDL2)
-find_package(SDL2 CONFIG REQUIRED)
+# hunter_add_package(SDL2)
+# find_package(SDL2 CONFIG REQUIRED)
 
 hunter_add_package(CURL)
 find_package(CURL CONFIG REQUIRED)
@@ -75,6 +75,7 @@ find_package(lzma CONFIG REQUIRED)
 hunter_add_package(Vulkan-Headers)
 find_package(Vulkan-Headers CONFIG REQUIRED)
 
+find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GMP REQUIRED)
 

@@ -192,7 +192,7 @@ target_sources(${PROJECT_NAME}
     ${CMAKE_CURRENT_LIST_DIR}/surfaceOpengles.cpp
     ${CMAKE_CURRENT_LIST_DIR}/surfaceOpengles2.cpp
     ${CMAKE_CURRENT_LIST_DIR}/surfaceSoftware.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/surfaceVulkan.cpp
+    # ${CMAKE_CURRENT_LIST_DIR}/surfaceVulkan.cpp
     ${CMAKE_CURRENT_LIST_DIR}/thing.cpp
     ${CMAKE_CURRENT_LIST_DIR}/thingManager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/tile.cpp
@@ -213,6 +213,8 @@ target_link_libraries(${PROJECT_NAME}
     lzma::lzma
     Vulkan-Headers::Vulkan-Headers
     OpenGL::OpenGL
+    OpenGL::GLX
+    OpenGL::EGL
     ZLIB::ZLIB
     ${GMP_LIBRARIES}
 )

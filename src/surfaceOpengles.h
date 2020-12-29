@@ -23,9 +23,12 @@
 #define __FILE_SURFACE_OPENGLES_h_
 
 #include "engine.h"
-#include <GL/gl.h>
 
 #if defined(SDL_VIDEO_RENDER_OGL_ES)
+
+#if defined(__linux__)
+#include <GL/gl.h>
+#endif
 
 #define OPENGLES_MAX_VERTICES 2048
 #define OPENGLES_MAX_INDICES (OPENGLES_MAX_VERTICES * 6 / 4)
